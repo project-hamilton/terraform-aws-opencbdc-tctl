@@ -145,7 +145,7 @@ resource "aws_launch_template" "agent" {
 
 module "instance_profile_role" {
   source  = "terraform-aws-modules/iam/aws//modules/iam-assumable-role"
-  version = "~> 4"
+  version = "~> 5"
 
   role_name               = "agent-role-${data.aws_region.current.name}"
   create_role             = true
