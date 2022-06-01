@@ -185,16 +185,16 @@ Specifically:
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | = 0.13.4 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | ~> 3.0 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | = 1.2.1 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 4.4 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | ~> 3.0 |
-| <a name="provider_aws.use2"></a> [aws.use2](#provider\_aws.use2) | ~> 3.0 |
-| <a name="provider_aws.usw2"></a> [aws.usw2](#provider\_aws.usw2) | ~> 3.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 4.4 |
+| <a name="provider_aws.use2"></a> [aws.use2](#provider\_aws.use2) | >= 4.4 |
+| <a name="provider_aws.usw2"></a> [aws.usw2](#provider\_aws.usw2) | >= 4.4 |
 | <a name="provider_template"></a> [template](#provider\_template) | n/a |
 
 ## Modules

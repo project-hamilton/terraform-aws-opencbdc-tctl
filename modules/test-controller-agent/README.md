@@ -16,7 +16,7 @@ No requirements.
 |------|--------|---------|
 | <a name="module_agent_outputs_iam_policy"></a> [agent\_outputs\_iam\_policy](#module\_agent\_outputs\_iam\_policy) | terraform-aws-modules/iam/aws//modules/iam-policy | ~> 3.0 |
 | <a name="module_agent_security_group"></a> [agent\_security\_group](#module\_agent\_security\_group) | terraform-aws-modules/security-group/aws | 3.1.0 |
-| <a name="module_instance_profile_role"></a> [instance\_profile\_role](#module\_instance\_profile\_role) | terraform-aws-modules/iam/aws//modules/iam-assumable-role | ~> 2.17.0 |
+| <a name="module_instance_profile_role"></a> [instance\_profile\_role](#module\_instance\_profile\_role) | terraform-aws-modules/iam/aws//modules/iam-assumable-role | ~> 5 |
 
 ## Resources
 
