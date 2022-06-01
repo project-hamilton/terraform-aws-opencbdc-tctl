@@ -128,7 +128,7 @@ module "asg" {
   security_groups              = [module.security_group.this_security_group_id]
   associate_public_ip_address  = true
   recreate_asg_when_lc_changes = true
-  iam_instance_profile         = module.instance_profile_role.this_iam_instance_profile_name
+  iam_instance_profile         = module.instance_profile_role.iam_instance_profile_name
   key_name                     = aws_key_pair.bastion.id
 
   user_data = data.template_cloudinit_config.config.rendered

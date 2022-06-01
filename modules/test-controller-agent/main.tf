@@ -95,7 +95,7 @@ resource "aws_launch_template" "agent" {
   name = "${local.name}-${each.key}"
 
   iam_instance_profile {
-    name = module.instance_profile_role.this_iam_instance_profile_name
+    name = module.instance_profile_role.iam_instance_profile_name
   }
 
   image_id                             = data.aws_ami.agent.id
