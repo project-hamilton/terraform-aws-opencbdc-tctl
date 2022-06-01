@@ -33,7 +33,7 @@ module "security_group" {
 # EC2 Instance Profile
 module "instance_profile_role" {
   source  = "terraform-aws-modules/iam/aws//modules/iam-assumable-role"
-  version = "~> 2.17.0"
+  version = "~> 5"
 
   role_name               = "${local.name}-role-${data.aws_region.current.name}"
   create_role             = true
