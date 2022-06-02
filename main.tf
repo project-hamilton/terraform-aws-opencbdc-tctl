@@ -500,7 +500,7 @@ module "test_controller_agent_use1" {
   vpc_id                    = module.vpc.vpc_id
   public_subnets            = module.vpc.public_subnets
   private_subnets           = module.vpc.private_subnets
-  public_key                = var.public_key
+  public_key                = var.ec2_public_key
   binaries_s3_bucket        = aws_s3_bucket.binaries.id
   outputs_s3_bucket         = aws_s3_bucket.agent_outputs.id
   outputs_s3_bucket_arn     = aws_s3_bucket.agent_outputs.arn
@@ -530,7 +530,7 @@ module "test_controller_agent_use2" {
   vpc_id                    = module.vpc_use2.vpc_id
   public_subnets            = module.vpc_use2.public_subnets
   private_subnets           = module.vpc_use2.private_subnets
-  public_key                = var.public_key
+  public_key                = var.ec2_public_key
   binaries_s3_bucket        = aws_s3_bucket.binaries.id
   outputs_s3_bucket         = aws_s3_bucket.agent_outputs.id
   outputs_s3_bucket_arn     = aws_s3_bucket.agent_outputs.arn
@@ -560,7 +560,7 @@ module "test_controller_agent_usw2" {
   vpc_id                    = module.vpc_usw2.vpc_id
   public_subnets            = module.vpc_usw2.public_subnets
   private_subnets           = module.vpc_usw2.private_subnets
-  public_key                = var.public_key
+  public_key                = var.ec2_public_key
   binaries_s3_bucket        = aws_s3_bucket.binaries.id
   outputs_s3_bucket         = aws_s3_bucket.agent_outputs.id
   outputs_s3_bucket_arn     = aws_s3_bucket.agent_outputs.arn
@@ -623,7 +623,7 @@ module "bastion" {
 
   vpc_id          = module.vpc.vpc_id
   public_subnets  = module.vpc.public_subnets
-  public_key      = var.public_key
+  public_key      = var.ec2_public_key
   hosted_zone_id  = module.route53_dns.hosted_zone_id
   certs_efs_id    = module.test_controller_service.certs_efs_id
   testruns_efs_id = module.test_controller_service.testruns_efs_id
