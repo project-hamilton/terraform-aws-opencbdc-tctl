@@ -1,3 +1,8 @@
+variable "name" {
+  description = "Name to denote resources"
+  type        = string
+}
+
 variable "cluster_name" {
   description = "The ECS cluster name"
   type        = string

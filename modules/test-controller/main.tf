@@ -1,5 +1,5 @@
 locals {
-  name            = "test-controller"
+  name            = var.name
   agent_port      = "8081"
   ui_port         = "443"
   ui_port_wo_cert = "8443"
@@ -542,7 +542,7 @@ module "efs_security_group" {
 }
 
 resource "aws_efs_file_system" "certs" {
-  creation_token = "certs"
+  creation_token = "${local.name}-certs"
   encrypted = true
 
   tags = merge(
@@ -562,7 +562,7 @@ resource "aws_efs_backup_policy" "certs_backup_policy" {
 }
 
 resource "aws_efs_file_system" "testruns" {
-  creation_token = "testruns"
+  creation_token = "${local.name}-testruns"
   encrypted = true
 
   lifecycle_policy {
@@ -586,7 +586,7 @@ resource "aws_efs_backup_policy" "testruns_backup_policy" {
 }
 
 resource "aws_efs_file_system" "binaries" {
-  creation_token = "binaries"
+  creation_token = "${local.name}-binaries"
   encrypted = true
 
   tags = merge(

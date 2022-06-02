@@ -1,3 +1,8 @@
+variable "name" {
+  description = "Name to denote resources"
+  type        = string
+}
+
 variable "vpc_id" {
   description = "The VPC id"
   type        = string

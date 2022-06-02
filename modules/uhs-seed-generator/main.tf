@@ -1,5 +1,5 @@
 locals {
-    name = "uhs_seed_generator"
+    name = "${var.name}-uhs_seed_generator"
 }
 
 data "aws_region" "current" {}
