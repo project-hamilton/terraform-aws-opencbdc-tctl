@@ -469,7 +469,7 @@ module "uhs_seed_generator" {
   
   count = var.create_uhs_seed_generator ? 1 : 0
 
-  name                   = var.name
+  name                   = local.name
   vpc_id                 = module.vpc.vpc_id
   private_subnets        = module.vpc.private_subnets
   max_vcpus              = var.uhs_seed_generator_max_vcpus
