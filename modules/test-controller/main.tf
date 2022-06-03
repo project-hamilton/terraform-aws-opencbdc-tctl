@@ -198,7 +198,7 @@ module "task_security_group" {
   source  = "terraform-aws-modules/security-group/aws"
   version = "3.1.0"
 
-  name   = "ecs-task-sg"
+  name   = "${local.name}-ecs-task-sg"
   vpc_id = var.vpc_id
 
   # Allow all incoming traffic from within VPC
@@ -527,7 +527,7 @@ module "efs_security_group" {
   source  = "terraform-aws-modules/security-group/aws"
   version = "3.1.0"
 
-  name   = "efs-sg"
+  name   = "${local.name}-efs-sg"
   vpc_id = var.vpc_id
 
   # Allow NFS/EFS incoming traffic from within VPC
@@ -671,7 +671,7 @@ module "certbot_security_group" {
   source  = "terraform-aws-modules/security-group/aws"
   version = "3.1.0"
 
-  name   = "certbot-sg"
+  name   = "${local.name}-certbot-sg"
   vpc_id = var.vpc_id
 
   # Allow all outgoing traffic

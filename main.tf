@@ -270,7 +270,7 @@ module "ecs" {
   source = "terraform-aws-modules/ecs/aws"
   version = "3.0.0"
 
-  name               = var.environment
+  name               = "${var.name}-var.environment"
   container_insights = true
   capacity_providers = ["FARGATE", "FARGATE_SPOT"]
 
@@ -303,7 +303,7 @@ module "ec2_profile" {
   source  = "terraform-aws-modules/ecs/aws//modules/ecs-instance-profile"
   version = "3.0.0"
 
-  name = "ecs-asg"
+  name = "${var.name}-ecs-asg"
 
   tags = local.tags
 }
@@ -320,7 +320,7 @@ module "ecs_cluster_security_group" {
   source  = "terraform-aws-modules/security-group/aws"
   version = "3.1.0"
 
-  name   = "ecs-cluster-sg"
+  name   = "${var.name}-ecs-cluster-sg"
   vpc_id = module.vpc.vpc_id
 
   # Allow all incoming traffic from within VPC
@@ -344,7 +344,7 @@ module "ecs_cluster_asg" {
   source  = "terraform-aws-modules/autoscaling/aws"
   version = "3.9.0"
 
-  name = "ecs-cluster-asg"
+  name = "${var.name}-ecs-cluster-asg"
 
   # Launch configuration
   #
@@ -414,7 +414,7 @@ resource "aws_s3_bucket" "binaries" {
 
 # Test outputs S3 Bucket
 resource "aws_s3_bucket" "agent_outputs" {
-  bucket        = "${data.aws_caller_identity.current.account_id}-${data.aws_region.current.name}-agent-outputs"
+  bucket        = "${data.aws_caller_identity.current.account_id}-${data.aws_region.current.name}-${var.name}-agent-outputs"
   force_destroy = true
 
   server_side_encryption_configuration {
@@ -498,6 +498,7 @@ module "test_controller_agent_use1" {
     aws = aws.use1
   }
 
+  name                      = var.name
   vpc_id                    = module.vpc.vpc_id
   public_subnets            = module.vpc.public_subnets
   private_subnets           = module.vpc.private_subnets
@@ -528,6 +529,7 @@ module "test_controller_agent_use2" {
     aws = aws.use2
   }
 
+  name                      = var.name
   vpc_id                    = module.vpc_use2.vpc_id
   public_subnets            = module.vpc_use2.public_subnets
   private_subnets           = module.vpc_use2.private_subnets
@@ -558,6 +560,7 @@ module "test_controller_agent_usw2" {
     aws = aws.usw2
   }
 
+  name                      = var.name
   vpc_id                    = module.vpc_usw2.vpc_id
   public_subnets            = module.vpc_usw2.public_subnets
   private_subnets           = module.vpc_usw2.private_subnets
@@ -623,6 +626,7 @@ module "route53_dns" {
 module "bastion" {
   source = "./modules/bastion"
 
+  name            = var.name
   vpc_id          = module.vpc.vpc_id
   public_subnets  = module.vpc.public_subnets
   public_key      = var.ec2_public_key

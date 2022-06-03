@@ -15,7 +15,7 @@ data "aws_caller_identity" "current" {}
 
 # Region: us-east-1
 resource "aws_s3_bucket" "pipeline" {
-  bucket        = "${data.aws_caller_identity.current.account_id}-${data.aws_region.current.name}-${local.name}-codepipeline"
+  bucket        = "${local.name}-${data.aws_caller_identity.current.account_id}-${data.aws_region.current.name}-${local.name}-codepipeline"
   force_destroy = true
 
   server_side_encryption_configuration {

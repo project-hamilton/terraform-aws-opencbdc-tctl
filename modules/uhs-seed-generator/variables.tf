@@ -1,5 +1,5 @@
 variable "name" {
-  description = "Name to denote resources"
+  description = "Name suffix associated with resources"
   type        = string
 }
 
