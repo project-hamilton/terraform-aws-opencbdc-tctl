@@ -1,3 +1,9 @@
+variable "name" {
+  type = string
+  default = "opencbdc-tctl"
+  description = "Name suffix associated with resources"
+}
+
 variable "base_domain" {
   type        = string
   description = "Base domain to use for ACM Cert and Route53 record management."

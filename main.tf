@@ -1,5 +1,4 @@
 locals {
-  name        = "opencbdc-tctl"
   required_tags = {
     Owner       = "terraform"
     Environment = var.environment
@@ -33,7 +32,7 @@ module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
   version = "2.70.0"
 
-  name = local.name
+  name = var.name
   cidr = var.use1_main_network_block
   azs  = data.aws_availability_zones.use1.names
 
@@ -76,7 +75,7 @@ module "vpc_use2" {
     aws = aws.use2
   }
 
-  name = local.name
+  name = var.name
   cidr = var.use2_main_network_block
   azs  = data.aws_availability_zones.use2.names
 
@@ -120,7 +119,7 @@ module "vpc_usw2" {
     aws = aws.usw2
   }
 
-  name = local.name
+  name = var.name
   cidr = var.usw2_main_network_block
   azs  = data.aws_availability_zones.usw2.names
 
@@ -436,7 +435,7 @@ resource "aws_s3_bucket" "agent_outputs" {
 module "test_controller_service" {
   source = "./modules/test-controller"
 
-  name                                 = local.name
+  name                                 = var.name
   vpc_id                               = module.vpc.vpc_id
   public_subnets                       = module.vpc.public_subnets
   private_subnets                      = module.vpc.private_subnets
@@ -469,7 +468,7 @@ module "uhs_seed_generator" {
   
   count = var.create_uhs_seed_generator ? 1 : 0
 
-  name                   = local.name
+  name                   = var.name
   vpc_id                 = module.vpc.vpc_id
   private_subnets        = module.vpc.private_subnets
   max_vcpus              = var.uhs_seed_generator_max_vcpus
@@ -488,7 +487,7 @@ module "uhs_seed_generator" {
 
 # Region: us-east-1
 resource "aws_cloudwatch_log_group" "agents_use1" {
-  name              = "/${local.name}-agents-us-east-1"
+  name              = "/${var.name}-agents-us-east-1"
   retention_in_days = 1
 }
 
@@ -518,7 +517,7 @@ module "test_controller_agent_use1" {
 
 # Region: us-east-2
 resource "aws_cloudwatch_log_group" "agents_use2" {
-  name              = "/${local.name}-agents-us-east-2"
+  name              = "/${var.name}-agents-us-east-2"
   retention_in_days = 1
 }
 
@@ -548,7 +547,7 @@ module "test_controller_agent_use2" {
 
 # Region: us-west-2
 resource "aws_cloudwatch_log_group" "agents_usw2" {
-  name              = "/${local.name}-agents-us-west-2"
+  name              = "/${var.name}-agents-us-west-2"
   retention_in_days = 1
 }
 
@@ -583,7 +582,7 @@ module "test_controller_agent_usw2" {
 module "test_controller_deploy" {
   source = "./modules/test-controller-deploy"
 
-  name                             = local.name
+  name                             = var.name
   vpc_id                           = module.vpc.vpc_id
   private_subnets                  = module.vpc.private_subnets
   binaries_s3_bucket               = aws_s3_bucket.binaries.id
