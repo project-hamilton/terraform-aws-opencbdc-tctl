@@ -393,7 +393,7 @@ module "ecs_cluster_asg" {
 
 # Binaries S3 Bucket
 resource "aws_s3_bucket" "binaries" {
-  bucket        = "${data.aws_caller_identity.current.account_id}-${data.aws_region.current.name}-binaries"
+  bucket        = "${data.aws_caller_identity.current.account_id}-${data.aws_region.current.name}-${var.name}-binaries"
   force_destroy = true
 
   server_side_encryption_configuration {
