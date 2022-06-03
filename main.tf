@@ -207,6 +207,7 @@ module "vpc_endpoints_use1" {
     aws = aws.use1
   }
 
+  name            = var.name
   vpc_id          = module.vpc.vpc_id
   public_subnets  = module.vpc.public_subnets
   private_subnets = module.vpc.private_subnets
@@ -226,6 +227,7 @@ module "vpc_endpoints_use2" {
     aws = aws.use2
   }
 
+  name            = var.name
   vpc_id          = module.vpc_use2.vpc_id
   public_subnets  = module.vpc_use2.public_subnets
   private_subnets = module.vpc_use2.private_subnets
@@ -245,6 +247,7 @@ module "vpc_endpoints_usw2" {
     aws = aws.usw2
   }
 
+  name            = var.name
   vpc_id          = module.vpc_usw2.vpc_id
   public_subnets  = module.vpc_usw2.public_subnets
   private_subnets = module.vpc_usw2.private_subnets
