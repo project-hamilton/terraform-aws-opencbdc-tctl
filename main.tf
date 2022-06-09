@@ -273,7 +273,7 @@ module "ecs" {
   source = "terraform-aws-modules/ecs/aws"
   version = "3.0.0"
 
-  name               = "${var.name}-var.environment"
+  name               = "${var.name}-${var.environment}"
   container_insights = true
   capacity_providers = ["FARGATE", "FARGATE_SPOT"]
 
