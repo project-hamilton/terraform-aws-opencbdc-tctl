@@ -119,7 +119,7 @@ module "nlb" {
 # Create CNAMES for load balancers
 resource "aws_route53_record" "ui_nlb" {
   zone_id = var.hosted_zone_id
-  name    = "${local.name}.${var.dns_base_domain}"
+  name    = "test-controller.${var.dns_base_domain}"
   type    = "CNAME"
   ttl     = "5"
   records = [ module.ui_nlb.this_lb_dns_name ]
@@ -128,7 +128,7 @@ resource "aws_route53_record" "ui_nlb" {
 # Create CNAMES for load balancers
 resource "aws_route53_record" "nlb" {
   zone_id = var.hosted_zone_id
-  name    = "${local.name}-agents.${var.dns_base_domain}"
+  name    = "test-controller-agents.${var.dns_base_domain}"
   type    = "CNAME"
   ttl     = "5"
   records = [ module.nlb.this_lb_dns_name ]
