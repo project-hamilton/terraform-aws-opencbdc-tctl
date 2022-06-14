@@ -48,11 +48,11 @@ jobs:
       with:
         ref: ${{ github.event.pull_request.head.ref }}
 
-    - name: Render terraform docs and push changes back to PR
+    - name: Validate terraform docs
       uses: terraform-docs/gh-actions@main
       with:
         working-dir: ${{ matrix.working-dir }}
         output-file: README.md
-        output-method: inject
+        output-method: print
         git-push: false
         recursive: ${{ matrix.recursive }}
